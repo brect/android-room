@@ -6,6 +6,9 @@ import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 @Entity
 public class Aluno implements Serializable {
 
@@ -15,15 +18,15 @@ public class Aluno implements Serializable {
     private String sobrenome;
     private String telefone;
     private String email;
-    @Ignore
-    public Aluno(String nome, String telefone, String email) {
-        this.nome = nome;
-        this.telefone = telefone;
-        this.email = email;
+    private Calendar momentoDeCadastro = Calendar.getInstance();
+
+
+    public Calendar getMomentoDeCadastro() {
+        return momentoDeCadastro;
     }
 
-    public Aluno() {
-
+    public void setMomentoDeCadastro(Calendar momentoDeCadastro) {
+        this.momentoDeCadastro = momentoDeCadastro;
     }
 
     public void setNome(String nome) {
@@ -79,4 +82,5 @@ public class Aluno implements Serializable {
     public String getNomeCompleto() {
         return nome + " " + sobrenome;
     }
+
 }
