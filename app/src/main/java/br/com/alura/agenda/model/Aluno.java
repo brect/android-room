@@ -1,13 +1,12 @@
 package br.com.alura.agenda.model;
 
 import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 
 @Entity
 public class Aluno implements Serializable {
@@ -16,17 +15,13 @@ public class Aluno implements Serializable {
     private int id = 0;
     private String nome;
     private String sobrenome;
-    private String telefone;
+    private List<Telefone> telefones;
     private String email;
     private Calendar momentoDeCadastro = Calendar.getInstance();
 
 
-    public Calendar getMomentoDeCadastro() {
-        return momentoDeCadastro;
-    }
-
-    public void setMomentoDeCadastro(Calendar momentoDeCadastro) {
-        this.momentoDeCadastro = momentoDeCadastro;
+    public String getNome() {
+        return nome;
     }
 
     public void setNome(String nome) {
@@ -41,30 +36,35 @@ public class Aluno implements Serializable {
         this.sobrenome = sobrenome;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public List<Telefone> getTelefones() {
+        return telefones;
+    }
+
+    public void setTelefones(List<Telefone> telefones) {
+        this.telefones = telefones;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
     public String getEmail() {
         return email;
     }
 
+    public Calendar getMomentoDeCadastro() {
+        return momentoDeCadastro;
+    }
+
+    public void setMomentoDeCadastro(Calendar momentoDeCadastro) {
+        this.momentoDeCadastro = momentoDeCadastro;
+    }
+
+
     @NonNull
     @Override
     public String toString() {
-        return nome + " - " + telefone;
+        return nome;
     }
 
     public void setId(int id) {
@@ -82,5 +82,6 @@ public class Aluno implements Serializable {
     public String getNomeCompleto() {
         return nome + " " + sobrenome;
     }
+
 
 }
