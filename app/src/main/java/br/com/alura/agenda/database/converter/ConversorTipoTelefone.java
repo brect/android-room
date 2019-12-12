@@ -1,7 +1,6 @@
 package br.com.alura.agenda.database.converter;
 
-import android.arch.persistence.room.TypeConverter;
-
+import androidx.room.TypeConverter;
 import br.com.alura.agenda.model.TipoTelefone;
 
 public class ConversorTipoTelefone {
@@ -18,4 +17,5 @@ public class ConversorTipoTelefone {
         }
         return TipoTelefone.FIXO;
     }
+
 }
